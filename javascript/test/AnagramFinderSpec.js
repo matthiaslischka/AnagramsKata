@@ -1,19 +1,18 @@
-const expect = require("chai").expect;
+const expect = require('chai').expect;
 
-const AnagramFinder = require("../lib/AnagramFinder");
-const NotImplementedError = require("../lib/NotImplementedError");
+const AnagramFinder = require('../lib/AnagramFinder');
+const NotImplementedError = require('../lib/NotImplementedError');
 
-describe("AnagramFinder", () => {
+describe('AnagramFinder', () => {
+  let anagramFinder;
 
-	let anagramFinder;
+  beforeEach(() => {
+    anagramFinder = new AnagramFinder();
+  });
 
-	beforeEach(() => {
-		anagramFinder = new AnagramFinder();
-	});
-
-	describe(".findAnagrams()", () => {
-		it("should throw NotImplementedError", () => {
-			expect(() => anagramFinder.findAnagrams()).to.throw(NotImplementedError);
-		});
-	});
+  describe('.findAnagrams()', () => {
+    it('should throw NotImplementedError', () => {
+      expect(() => anagramFinder.findAnagrams()).to.throw(NotImplementedError);
+    });
+  });
 });

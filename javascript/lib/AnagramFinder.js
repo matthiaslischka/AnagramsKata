@@ -1,27 +1,24 @@
-const fileSystem = require('fs')
+const fs = require('fs');
 const path = require('path');
 
-const NotImplementedError = require('./NotImplementedError')
+const NotImplementedError = require('./NotImplementedError');
 
-class AnagramFinder{
+class AnagramFinder {
+  constructor() {
+    const fileLineBreaks = '\n';
+    const wordListPath = path.join(__dirname, 'wordlist.txt');
+    const fileEncoding = 'utf8';
 
-	constructor(){
+    const words = fs
+      .readFileSync(wordListPath, fileEncoding)
+      .split(fileLineBreaks);
 
-		const fileLineBreaks = '\n';
-		const wordListPath = path.join(__dirname, 'wordlist.txt');
-		const fileEncoding = 'utf8';
+    this.allTheWords = new Set(words);
+  }
 
-		var words = 
-			fileSystem
-				.readFileSync(wordListPath, fileEncoding)
-				.split(fileLineBreaks)
-
-		this.allTheWords = new Set(words);
-	}
-
-	findAnagrams(word){
-		throw new NotImplementedError();
-	}
+  findAnagrams(word) {
+    throw new NotImplementedError();
+  }
 }
 
 module.exports = AnagramFinder;
