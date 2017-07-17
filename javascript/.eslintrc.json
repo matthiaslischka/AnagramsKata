@@ -1,0 +1,14 @@
+{
+  "extends": "airbnb-base",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "linebreak-style": "off"
+  }
+}
