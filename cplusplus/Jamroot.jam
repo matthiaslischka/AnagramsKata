@@ -1,0 +1,64 @@
+import path ;
+
+using testing ;
+
+path-constant PROJECT_DIR : . ;
+
+project anagramskata
+:
+	requirements
+		<address-model>32:<architecture>x86
+		<warnings>on
+		<optimization>speed
+		<threading>multi
+
+		<target-os>windows:<define>WIN32
+		<toolset>gcc:<cxxflags>-std=c++14
+;
+
+lib gmock
+:
+	[ path.join $(PROJECT_DIR) lib/gmock/gmock-gtest-all.cc ]
+:
+	<include>lib/gmock
+	<link>static
+:
+	<address-model>64
+:
+	<include>lib/gmock
+;
+
+lib anagramskata-lib
+:
+	[ path.glob [ path.join $(PROJECT_DIR) src/main/kata ] : *.c* ]
+:
+	<include>src/main
+	<link>static
+:
+	<address-model>64  
+:
+	<include>src/main
+;
+
+exe anagramskata
+:
+	.//anagramskata-lib
+
+	src/main/main.cpp
+:
+:
+	<address-model>64
+;
+
+unit-test anagramskata-test
+:
+	.//gmock
+	.//anagramskata-lib
+
+	[ path.join $(PROJECT_DIR) lib/gmock/gmock_main.cc ]
+
+	[ path.glob-tree [ path.join $(PROJECT_DIR) src/test ] : *.c* ]
+:
+:
+	<address-model>64  
+;
