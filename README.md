@@ -1,6 +1,6 @@
 # Anagrams Kata
 
-This is the very basic setup for the "Anagrams" coding kata. **JS**, **C#** and **Java**
+This is the very basic setup for the "Anagrams" coding kata. **JS**, **C#**, **Go**, and **Java**
 
 > A code kata is an exercise in programming which helps a programmer hone their skills through practice and repetition.
 
