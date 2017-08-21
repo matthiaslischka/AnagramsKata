@@ -14,8 +14,8 @@ include_directories(${PROJECT_SOURCE_DIR}/src/main)
 file(GLOB_RECURSE LIB_SOURCE src/main/kata/*.c*)
 add_library(anagramskata-lib STATIC ${LIB_SOURCE})
 
-add_executable(anagramskata src/main/main.cpp lib/gmock/gmock_main.cc)
-target_link_libraries(anagramskata-test anagramskata-lib gmock ${Runtime_LIBRARIES})
+add_executable(anagramskata src/main/main.cpp)
+target_link_libraries(anagramskata anagramskata-lib ${Runtime_LIBRARIES})
 
 include_directories(${PROJECT_SOURCE_DIR}/lib/gmock)
 
