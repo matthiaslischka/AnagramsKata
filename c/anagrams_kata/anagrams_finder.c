@@ -9,7 +9,7 @@
  */
 static sds *anagrams_finder_find(struct anagrams_finder_s *_this, char *word, int *ret_sdslen)
 {
-    fprintf( stderr, "%s not implemented!\n", __func__);
+    fprintf(stderr, "%s not implemented!\n", __func__);
     return NULL;
 }
 
@@ -22,21 +22,21 @@ anagrams_finder_t *anagrams_finder_new(char *wordlist)
 {
     anagrams_finder_t *anagrams_finder_ref = malloc(sizeof(anagrams_finder_t));
 
-    char * buffer = 0;
+    char *buffer = NULL;
     long length = 0;
     sds tmp_sds = NULL;
-    FILE * f = fopen (wordlist, "rb");
+    FILE *f = fopen(wordlist, "rb");
 
     if (f)
     {
         /* Get len */
-        fseek (f, 0, SEEK_END); length = ftell (f); fseek (f, 0, SEEK_SET);
+        fseek(f, 0, SEEK_END); length = ftell(f); fseek(f, 0, SEEK_SET);
 
         /* Allocate buffer */
-        buffer = malloc (length);
+        buffer = malloc(length);
         if (buffer)
         {
-            fread (buffer, sizeof(*buffer), length, f);
+            fread(buffer, sizeof(*buffer), length, f);
 
             /* convert into sds string */
             tmp_sds = sdsnewlen(buffer, length);
@@ -47,11 +47,11 @@ anagrams_finder_t *anagrams_finder_new(char *wordlist)
             sdsfree(tmp_sds);
             free(buffer);
         }
-        fclose (f);
+        fclose(f);
     }
     else
     {
-        fprintf( stderr, "File %s not found!\n", wordlist);
+        fprintf(stderr, "File %s not found!\n", wordlist);
     }
 
     /* Set method pointers here */
