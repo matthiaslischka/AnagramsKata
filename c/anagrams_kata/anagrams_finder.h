@@ -1,10 +1,14 @@
 #ifndef ANAGRAMS_FINDER_H
 #define ANAGRAMS_FINDER_H
 
+#include <sds.h>
+
 typedef struct anagrams_finder_s
 {
-    char *wordlist;
-    void (*find)(struct anagrams_finder_s *_this, char *word);
+	int wordlist_len;
+    sds *wordlist;
+
+    sds *(*find)(struct anagrams_finder_s *_this, char *word, int *ret_sdslen);
 
 } anagrams_finder_t; 
 
